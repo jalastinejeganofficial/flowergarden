@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Flower Garden</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+        }
+
+        .garden-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        #garden-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .flower-popup {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 8px;
+            display: none;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+            max-width: 250px;
+        }
+
+        .flower-popup h3 {
+            margin-bottom: 5px;
+            font-size: 16px;
+        }
+
+        .flower-popup p {
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .flower-popup ul {
+            font-size: 12px;
+            list-style: none;
+        }
+
+        #rose-popup {
+            top: 50%;
+            left: 20%;
+        }
+
+        #sunflower-popup {
+            top: 60%;
+            left: 45%;
+        }
+
+        /* Floating Rose Information Section */
+        .roseinformation li {
+            list-style: none;
+            opacity: 0;
+            animation: fadeIn 2s ease forwards;
+            animation-delay: calc(var(--order) * 0.5s);
+        }
+
+        .roseinformation li:nth-child(1) { --order: 1; }
+        .roseinformation li:nth-child(2) { --order: 2; }
+        .roseinformation li:nth-child(3) { --order: 3; }
+        .roseinformation li:nth-child(4) { --order: 4; }
+        .roseinformation li:nth-child(5) { --order: 5; }
+        .roseinformation li:nth-child(6) { --order: 6; }
+        .roseinformation li:nth-child(7) { --order: 7; }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+        }
+
+        /* Media Queries for Mobile Responsiveness */
+        @media (max-width: 768px) {
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="garden-container">
+        <img src="IoDAVZI2SS2GL-UYYpBM1w.jpg" alt="Flower Garden" id="garden-image">
+        <div class="flower-popup" id="rose-popup">
+            <h3>Rose</h3>
+            <p>The rose is a symbol of love and beauty.</p>
+            <ul>
+                <li><strong>Advantages:</strong> Fragrant, Beautiful.</li>
+                <li><strong>Disadvantages:</strong> Has thorns.</li>
+            </ul>
+        </div>
+        <div class="flower-popup" id="sunflower-popup">
+            <h3>Sunflower</h3>
+            <p>Sunflowers are known for their large, bright yellow blooms.</p>
+            <ul>
+                <li><strong>Advantages:</strong> Provides seeds, Attractive to bees.</li>
+                <li><strong>Disadvantages:</strong> Needs lots of sun.</li>
+                <a href="#">Show More information</a>
+            </ul>
+        </div>
+    </div>
+
+    <center>Get Information For Flowers</center>
+    <hr>
+
+    <center>
+        <img width="40%" height="70%" src="https://ideogram.ai/assets/progressive-image/balanced/response/ACPKMYKKTGO0G8iZ6cVkkQ" alt="Rose Image">
+    </center>
+
+    <div class="roseinformation">
+        <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. At, quibusdam.</li>
+        <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. At, quibusdam.</li>
+        <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. At, quibusdam.</li>
+        <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. At, quibusdam.</li>
+        <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. At, quibusdam.</li>
+        <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. At, quibusdam.</li>
+        <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. At, quibusdam.</li>
+    </div>
+
+    <script>
+        // Get references to the pop-up elements
+        const rosePopup = document.getElementById('rose-popup');
+        const sunflowerPopup = document.getElementById('sunflower-popup');
+
+        // Add mouseover event listeners to trigger pop-ups when hovering over flowers
+        document.getElementById('garden-image').addEventListener('mousemove', function(event) {
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+
+            // Show the pop-up near specific regions for each flower
+            if (mouseX > 100 && mouseX < 400 && mouseY > 200 && mouseY < 500) {
+                rosePopup.style.display = 'block';
+                rosePopup.style.left = mouseX + 'px';
+                rosePopup.style.top = mouseY + 'px';
+            } else {
+                rosePopup.style.display = 'none';
+            }
+
+            if (mouseX > 600 && mouseX < 800 && mouseY > 300 && mouseY < 500) {
+                sunflowerPopup.style.display = 'block';
+                sunflowerPopup.style.left = mouseX + 'px';
+                sunflowerPopup.style.top = mouseY + 'px';
+            } else {
+                sunflowerPopup.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
